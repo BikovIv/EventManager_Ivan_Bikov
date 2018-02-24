@@ -1,0 +1,66 @@
+﻿@model EventManager_Ivan_Bikov.Entities.Event
+
+<h2>Create Event</h2>
+
+@using (Html.BeginForm("Create", "Event"))
+{
+    
+    @Html.AntiForgeryToken()
+    
+    <div class="container">
+       @Html.ValidationSummary(true)
+        <div class="form-group row">
+            <div class="col col-md-3">
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col col-md-3">
+                @Html.LabelFor(model => model.Location)
+                @Html.TextBoxFor(model => model.Location, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Location)
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col col-md-3">
+                @Html.LabelFor(model => model.StartDate)
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StartDate)
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col col-md-3">
+                @Html.LabelFor(model => model.EndDate)
+                @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control datecontrol" })
+                @Html.ValidationMessageFor(model => model.EndDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn-default" />
+            </div> 
+        </div>
+
+    </div>
+    
+}
+
+<script type="text/javascript">
+    $(function ()
+    {
+        $('#StartDate').datetimepicker({
+            format: "DD/MM/YYYY hh:mm"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker');
+            });
+
+        $('#EndDate').datetimepicker({
+            format: "DD/MM/YYYY hh:mm"
+        }).on('dp.change', function (e) {
+            $(this).data('DateTimePicker');
+        });
+    }); 
+</script>
